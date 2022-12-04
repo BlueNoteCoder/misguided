@@ -8,7 +8,7 @@ do
 	case "${flag}" in
 		d) # Select project path to work in:
 		  printf "Please select folder:\n"
-		  select d in /home/betsey/Desktop/Projects/*; do test -n "$d" && break; echo ">>> Invalid Selection"; done
+		  select d in "$project_dir"/*; do test -n "$d" && break; echo ">>> Invalid Selection"; done
 		  cd "$d" && pwd
 		  #directory="${OPTARG}"
 		  #echo $directory;
