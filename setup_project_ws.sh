@@ -1,17 +1,16 @@
 #!/bin/bash
 
-# proj_dir=<path_that_holds_projects>
+# REMOVE project_dir PATH BEFORE COMMITTING!
+#project_dir=<PATH_OF_PROJECT_PATH>
 
 while getopts "ftvd" flag;
 
 do
 	case "${flag}" in
-		d) # Select project path to work in:
+		d)
 		  printf "Please select folder:\n"
-		  select d in "$project_dir"/*; do test -n "$d" && break; echo ">>> Invalid Selection"; done
+		  select d in $project_dir; do test -n "$d" && break; echo ">>> Invalid Selection"; done
 		  cd "$d" && pwd
-		  #directory="${OPTARG}"
-		  #echo $directory;
 		  ;; 
 		f)   
 		  firefox="${OPTARG}"   
@@ -23,10 +22,10 @@ do
                   ;;            
   		v)
 		  echo "Opening Vscode"
-		  if [ -z "$directory" ]; then
+		  if [ -z "$d" ]; then
 			  code
 		  else
-			  code "$directory"   
+			  code "$d"   
 		  fi
 		  ;;
 		
